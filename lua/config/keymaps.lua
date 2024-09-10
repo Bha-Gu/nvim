@@ -1,4 +1,3 @@
-
 local opts_with_decs = function(desc)
 	return { noremap = true, silent = true, desc = desc }
 end
@@ -73,6 +72,8 @@ end, opts_with_decs("Toggle Explorer Focus"))
 -- buffers
 keymap("n", "<leader><Tab>", "<Cmd>BufferLineCycleNext<CR>", opts_with_decs("Next Tab"))
 keymap("n", "<leader><S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts_with_decs("Previous Tab"))
+keymap("n", "[<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts_with_decs("Next Tab"))
+keymap("n", "]<Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts_with_decs("Previous Tab"))
 
 -- save
 keymap("n", "<leader>w", "<Cmd>w<CR>", opts_with_decs("Save Curr File"))
@@ -109,3 +110,16 @@ function _GITUI_TOGGLE()
 end
 
 keymap("n", "<leader>gg", "<Cmd>lua _GITUI_TOGGLE()<CR>", opts_with_decs("Gitui interface"))
+
+local wk = require("which-key")
+wk.add({
+  { "<leader>f", group = "find" }, -- group
+  { "<leader>d", group = "debug" }, -- group
+  { "<leader>l", group = "LSP" }, -- group
+  { "<leader>t", group = "Terminal" }, -- group
+  { "<leader>g", group = "git" }, -- group
+  { "[", group = "Prev" }, -- group
+  { "]", group = "Next" }, -- group
+  { "<leader>", group = "Custom" }, -- group
+
+})
