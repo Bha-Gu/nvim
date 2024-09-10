@@ -101,6 +101,11 @@ keymap("n", "<leader>ds", function() require("dap").run_to_cursor() end, opts_wi
 keymap("n", "<leader>tf", "<Cmd>ToggleTerm direction=float<CR>", opts_with_decs("ToggleTerm Float"))
 keymap("n", "<leader>th", "<Cmd>ToggleTerm size=10 direction=horizontal<CR>", opts_with_decs("ToggleTerm Horizontal Split"))
 keymap("n", "<leader>tv", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", opts_with_decs("ToggleTerm Vertical Split"))
-if vim.fn.executable "git" == 1 and vim.fn.executable "lazygit" == 1 then
--- TODO    
+
+local Terminal = require("toggleterm.terminal").Terminal
+local gitui = Terminal:new({ cmd = "gitui", hidden = true })
+function _GITUI_TOGGLE()
+    gitui:toggle()
 end
+
+keymap("n", "<leader>gg", "<Cmd>lua _GITUI_TOGGLE()<CR>", opts_with_decs("Gitui interface"))
