@@ -81,7 +81,7 @@ return { -- Autocompletion
                     luasnip.lsp_expand(args.body)
                 end,
             },
-            completion = { completeopt = 'menu,menuone,noinsert' },
+--            completion = { completeopt = 'menu,menuone,noinsert' },
 
             mapping = {
                 ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -162,9 +162,11 @@ return { -- Autocompletion
                     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
                 },
             },
+            view = {
+                entries = "nativr"
+            },
             experimental = {
-                ghost_text = false,
-                native_menu = false,
+                ghost_text = true,
             },
         }
     end,
