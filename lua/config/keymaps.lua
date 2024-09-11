@@ -71,8 +71,8 @@ end, opts_with_decs("Toggle Explorer Focus"))
 -- buffers
 keymap("n", "<leader><Tab>", "<Cmd>BufferLineCycleNext<CR>", opts_with_decs("Next Tab"))
 keymap("n", "<leader><S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts_with_decs("Previous Tab"))
-keymap("n", "[<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts_with_decs("Next Tab"))
-keymap("n", "]<Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts_with_decs("Previous Tab"))
+keymap("n", "]<Tab>", "<Cmd>BufferLineCycleNext<CR>", opts_with_decs("Next Tab"))
+keymap("n", "[<Tab>", "<Cmd>BufferLineCyclePrev<CR>", opts_with_decs("Previous Tab"))
 
 -- save
 keymap("n", "<leader>w", "<Cmd>w<CR>", opts_with_decs("Save Curr File"))
