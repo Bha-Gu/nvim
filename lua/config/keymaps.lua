@@ -5,6 +5,7 @@ end
 -- Shorten function name
 local keymap = vim.keymap.set
 
+
 -- Smart Splits Mappings
 keymap("n", "<C-h>", function()
 	require("smart-splits").move_cursor_left()
