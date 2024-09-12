@@ -25,7 +25,7 @@ return {
             --- bufferline so use this at your discretion knowing that it has
             --- some limitations that will *NOT* be fixed.
             name_formatter = function(buf) -- buf contains:
-                local user = "aadi"
+                local user = os.getenv("USER")
                 local mods = {
                     ["/home/" .. user] = "󰚡",
                     ["/Downloads"] = "/󰮏",
