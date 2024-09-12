@@ -2,16 +2,62 @@ local opts_with_decs = function(desc)
 	return { noremap = true, silent = true, desc = desc }
 end
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.keymap.set
 
--- Window Navigation
-keymap("n", "<C-h>", "<C-w>h", opts_with_decs("Move to the left window"))
-keymap("n", "<C-j>", "<C-w>j", opts_with_decs("Move to the down window"))
-keymap("n", "<C-k>", "<C-w>k", opts_with_decs("Move to the up window"))
-keymap("n", "<C-l>", "<C-w>l", opts_with_decs("Move to the right window"))
+-- Smart Splits Mappings
+keymap("n", "<C-h>", function()
+	require("smart-splits").move_cursor_left()
+end, opts_with_decs("Move to Left Split"))
+keymap("n", "<C-j>", function()
+	require("smart-splits").move_cursor_down()
+end, opts_with_decs("Move to Below Split"))
+keymap("n", "<C-k>", function()
+	require("smart-splits").move_cursor_up()
+end, opts_with_decs("Move to Above Split"))
+keymap("n", "<C-l>", function()
+	require("smart-splits").move_cursor_right()
+end, opts_with_decs("Move to Right Split"))
+keymap("n", "<C-Up>", function()
+	require("smart-splits").resize_up()
+end, opts_with_decs("Resize Split Up"))
+keymap("n", "<C-Down>", function()
+	require("smart-splits").resize_down()
+end, opts_with_decs("Resize Split Down"))
+keymap("n", "<C-Left>", function()
+	require("smart-splits").resize_left()
+end, opts_with_decs("Resize Split Left"))
+keymap("n", "<C-Right>", function()
+	require("smart-splits").resize_right()
+end, opts_with_decs("Resize Split Right"))
+
+-- Swapping Buffers Between Windows with Ctrl + Shift
+keymap("n", "<C-S-h>", require("smart-splits").swap_buf_left, opts_with_decs("Swap Buffer to Left Split"))
+keymap("n", "<C-S-j>", require("smart-splits").swap_buf_down, opts_with_decs("Swap Buffer to Below Split"))
+keymap("n", "<C-S-k>", require("smart-splits").swap_buf_up, opts_with_decs("Swap Buffer to Above Split"))
+keymap("n", "<C-S-l>", require("smart-splits").swap_buf_right, opts_with_decs("Swap Buffer to Right Split"))
+
+-- Toggle Comment Line and Block
+keymap("n", "<leader>/", "gcc", { remap = true, desc = "Toggle Comment Line" })
+keymap("x", "<leader>/", "gc", { remap = true, desc = "Toggle Comment Block" })
+
+-- Map Redo to U
+keymap("n", "U", "<C-r>", opts_with_decs("Redo"))
+keymap("n", "u", "u", opts_with_decs("Undo"))
+
+-- Stay in indent mode
+keymap("v", "<", "<gv^", opts_with_decs("Reduce Indent"))
+keymap("v", ">", ">gv^", opts_with_decs("Increase Indent"))
+
+-- Move Text Up and Down in Visual Mode
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
+
+-- Move Text Up and Down in Visual Line Mode
+keymap("x", "J", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
+keymap("x", "K", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
+keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
+keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
 
 -- Telescope Extensions
 pcall(require("telescope").load_extension, "fzf")
@@ -147,16 +193,6 @@ function _CLIPBOARD()
 		layout_strategy = "center",
 		previewer = false,
 		layout_config = {
-		-- 	horizontal = {
-		-- 		width = 0.9, -- Increase width to 90% of the screen
-		-- 		height = 0.8, -- Increase height to 80% of the screen
-		-- 		preview_width = 0.9, -- Set preview window to take up half the width
-		-- 	},
-		-- 	vertical = {
-		-- 		width = 0.8, -- Increase width for vertical layout
-		-- 		height = 0.9, -- Increase height for vertical layout
-		-- 		preview_height = 0.9, -- Set preview window height
-		-- 	},
 			prompt_position = "top", -- Position the prompt at the top
 		},
 		truncate = false,

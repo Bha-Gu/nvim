@@ -18,20 +18,22 @@ return {
 				{ source = "filesystem", display_name = " Files" },
 				{ source = "buffers", display_name = "󰓩 Buffers" },
 				{ source = "git_status", display_name = " Git" },
+				{ source = "diagnostics", display_name = " Diagnostics" },
 			},
 		},
 		open_files_do_not_replace_types = { "terminal", "Trouble", "trouble", "qf", "Outline" },
 		filesystem = {
 			bind_to_cwd = true,
 			cwd_target = {
-				sidebar = "tab", -- sidebar is when position = left or right
-				current = "window", -- current is when position = current
+				sidebar = "global", -- sidebar is when position = left or right
+				current = "global", -- current is when position = current
 			},
 			follow_current_file = { enabled = true },
 			use_libuv_file_watcher = true,
 		},
 		window = {
 			mappings = {
+				["<F5>"] = "refresh",
 				["l"] = "open",
 				["h"] = "close_node",
 				["<space>"] = "none",
@@ -65,6 +67,20 @@ return {
 					staged = "󰱒",
 				},
 			},
+		},
+		nesting_rules = {
+			["/home/" .. os.getenv("USER")] = "󰚡",
+			["/Downloads"] = "/󰮏",
+			["/Documents"] = "/󱔘",
+			["/Desktop"] = "/",
+			["/Music"] = "/󰽴",
+			["/Pictures"] = "/",
+			["/Videos"] = "/",
+			["/.config"] = "/",
+			["/nvim"] = "/",
+			--["vim"] = "",
+			["/lua"] = "/󰢱",
+			["/plugins"] = "/",
 		},
 	},
 }
