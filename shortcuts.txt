@@ -1,0 +1,27 @@
+c -> Close Buffer <- q
+C -> Force Close Buffer
+h -> Home Screen
+n -> New File
+q -> quit window 
+Q -> Quit Neovim
+b: {
+    b -> Select buffer from tabline
+    c -> Close all buffers exept current
+    C -> Close all buffers
+    d -> close buffer from tabline
+    l -> close all buffers to the left
+    p -> previous buffer
+    r -> close all buffers to the right
+    \ -> Horizontal split 
+    | -> Verticle split
+    s: sort {
+        --by stuff
+    }
+}
+d: {
+    u -> Toggle Debugger UI
+}
+f: {
+
+}
+
