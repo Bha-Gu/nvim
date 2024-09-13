@@ -61,34 +61,91 @@ keymap("x", "<A-j>", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
 keymap("x", "<A-k>", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
 
 -- Telescope Extensions
-pcall(require("telescope").load_extension, "fzf")
 pcall(require("telescope").load_extension, "ui-select")
 
 -- Telescope Commands
 local builtin = require("telescope.builtin")
-keymap("n", "<leader>fh", builtin.help_tags, opts_with_decs("[f]ind [h]elp tags"))
-keymap("n", "<leader>ff", builtin.find_files, opts_with_decs("[f]ind [f]iles"))
-keymap("n", "<leader>fs", builtin.builtin, opts_with_decs("[f]ind [s]earch Telescope functions"))
-keymap("n", "<leader>fw", builtin.grep_string, opts_with_decs("[f]ind current [w]ord"))
-keymap("n", "<leader>fg", builtin.live_grep, opts_with_decs("[f]ind by [g]rep in files"))
-keymap("n", "<leader>fd", builtin.diagnostics, opts_with_decs("[f]ind [d]iagnostics"))
-keymap("n", "<leader>f.", builtin.oldfiles, opts_with_decs("[f]ind recently opened files"))
-keymap("n", "<leader>fb", builtin.buffers, opts_with_decs("[f]ind open [b]uffers"))
-keymap("n", "<leader>f/", function()
-	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
-		winblend = 10,
-		previewer = false,
-	}))
-end, opts_with_decs("[f]ind in current buffer fuzzily"))
 
--- Live Grep in Open Files
-keymap("n", "<leader>fF", function()
-	builtin.live_grep({
-		grep_open_files = true,
-		prompt_title = "Grep in Open Files",
-	})
-end, opts_with_decs("[f]ind by grep in open [f]iles"))
+-- File Pickers
+keymap("n", "<leader>fff", builtin.find_files, opts_with_decs("[f]ind [f]iles"))
+keymap("n", "<leader>ffg", builtin.git_files, opts_with_decs("[f]ind git files"))
+keymap("n", "<leader>ffw", builtin.grep_string, opts_with_decs("[f]ind current [w]ord"))
+keymap("n", "<leader>ffe", builtin.live_grep, opts_with_decs("[f]ind by [g]rep in files"))
 
+-- Vim Pickers
+keymap("n", "<leader>fva", builtin.autocommands, opts_with_decs("find autocommands"))
+keymap("n", "<leader>fvb", builtin.buffers, opts_with_decs("find open buffers"))
+keymap("n", "<leader>fvc", builtin.commands, opts_with_decs("find commands"))
+keymap("n", "<leader>fvC", builtin.command_history, opts_with_decs("find history of commands"))
+keymap("n", "<leader>fvf", builtin.filetypes, opts_with_decs("find filetypes"))
+keymap("n", "<leader>fvh", builtin.help_tags, opts_with_decs("find help tags"))
+keymap("n", "<leader>fvH", builtin.highlights, opts_with_decs("find highlights"))
+keymap("n", "<leader>fvj", builtin.jumplist, opts_with_decs("find jump list entries"))
+keymap("n", "<leader>fvk", builtin.marks, opts_with_decs("find key marks"))
+keymap("n", "<leader>fvK", builtin.keymaps, opts_with_decs("find keymaps"))
+keymap("n", "<leader>fvl", builtin.colorscheme, opts_with_decs("find light and dark themes"))
+keymap("n", "<leader>fvL", builtin.loclist, opts_with_decs("find location list"))
+keymap("n", "<leader>fvm", builtin.man_pages, opts_with_decs("find man pages"))
+keymap("n", "<leader>fvo", builtin.vim_options, opts_with_decs("find options"))
+keymap("n", "<leader>fvq", builtin.quickfix, opts_with_decs("find quickfix list"))
+keymap("n", "<leader>fvr", builtin.registers, opts_with_decs("find registers"))
+keymap("n", "<leader>fvR", builtin.resume, opts_with_decs("find and resume previous picker"))
+keymap("n", "<leader>fvs", builtin.search_history, opts_with_decs("find search history"))
+keymap("n", "<leader>fvS", builtin.spell_suggest, opts_with_decs("find spelling suggestions"))
+keymap("n", "<leader>fvT", builtin.tags, opts_with_decs("find tags"))
+keymap("n", "<leader>fvt", builtin.current_buffer_tags, opts_with_decs("find tags in current buffer"))
+keymap("n", "<leader>fvx", builtin.quickfixhistory, opts_with_decs("find quickfix history"))
+keymap("n", "<leader>fvz", builtin.pickers, opts_with_decs("find past pickers"))
+keymap("n", "<leader>fv.", builtin.oldfiles, opts_with_decs("find recently opened files"))
+keymap("n", "<leader>fv/", builtin.current_buffer_fuzzy_find, opts_with_decs("find in current buffer"))
+
+
+-- Neovim LSP Pickers
+keymap("n", "<leader>flr", builtin.lsp_references, opts_with_decs("find LSP references"))
+keymap("n", "<leader>flI", builtin.lsp_incoming_calls, opts_with_decs("find LSP incoming calls"))
+keymap("n", "<leader>flO", builtin.lsp_outgoing_calls, opts_with_decs("find LSP outgoing calls"))
+keymap("n", "<leader>fls", builtin.lsp_document_symbols, opts_with_decs("find LSP document symbols"))
+keymap("n", "<leader>flw", builtin.lsp_workspace_symbols, opts_with_decs("find LSP workspace symbols"))
+keymap("n", "<leader>flW", builtin.lsp_dynamic_workspace_symbols, opts_with_decs("find dynamic workspace symbols"))
+keymap("n", "<leader>fld", builtin.diagnostics, opts_with_decs("find diagnostics"))
+keymap("n", "<leader>fli", builtin.lsp_implementations, opts_with_decs("find LSP implementations"))
+keymap("n", "<leader>flD", builtin.lsp_definitions, opts_with_decs("find LSP definitions"))
+keymap("n", "<leader>flt", builtin.lsp_type_definitions, opts_with_decs("find LSP type definitions"))
+
+
+-- Git Pickers
+keymap("n", "<leader>fgc", builtin.git_commits, opts_with_decs("list git commits"))
+keymap("n", "<leader>fgB", builtin.git_bcommits, opts_with_decs("list buffer's git commits"))
+keymap("n", "<leader>fgR", builtin.git_bcommits_range, opts_with_decs("list buffer's git commits in range"))
+keymap("n", "<leader>fgb", builtin.git_branches, opts_with_decs("list git branches"))
+keymap("n", "<leader>fgs", builtin.git_status, opts_with_decs("list git status changes"))
+keymap("n", "<leader>fgS", builtin.git_stash, opts_with_decs("list git stash items"))
+
+
+
+
+
+
+-- keymap("n", "<leader>fa", builtin.autocommands, opts_with_decs("[f]ind [a]utocommands"))
+-- keymap("n", "<leader>fs", builtin.builtin, opts_with_decs("[f]ind [s]earch Telescope functions"))
+-- keymap("n", "<leader>fc", builtin.colorscheme, opts_with_decs("[f]ind [c]olorscheme"))
+-- keymap("n", "<leader>fh", builtin.help_tags, opts_with_decs("[f]ind [h]elp tags"))
+-- keymap("n", "<leader>fd", builtin.diagnostics, opts_with_decs("[f]ind [d]iagnostics"))
+-- keymap("n", "<leader>f/", function()
+-- 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+-- 		winblend = 10,
+-- 		previewer = false,
+-- 	}))
+-- end, opts_with_decs("[f]ind in current buffer fuzzily"))
+--
+-- -- Live Grep in Open Files
+-- keymap("n", "<leader>fF", function()
+-- 	builtin.live_grep({
+-- 		grep_open_files = true,
+-- 		prompt_title = "Grep in Open Files",
+-- 	})
+-- end, opts_with_decs("[f]ind by grep in open [f]iles"))
+--
 -- Neovim Config Search
 keymap("n", "<leader>fn", function()
 	builtin.find_files({ cwd = vim.fn.stdpath("config") })
@@ -185,6 +242,7 @@ local gitui = Terminal:new({ cmd = "gitui", hidden = true })
 function _GITUI_TOGGLE()
 	gitui:toggle()
 end
+
 
 local TeleClip = require("telescope").extensions.neoclip
 function _CLIPBOARD()
