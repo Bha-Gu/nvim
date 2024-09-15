@@ -25,29 +25,29 @@ return {
             --- bufferline so use this at your discretion knowing that it has
             --- some limitations that will *NOT* be fixed.
             name_formatter = function(buf) -- buf contains:
-                local user = os.getenv("USER")
-                local mods = {
-                    ["/home/" .. user] = "󰚡",
-                    ["/Downloads"] = "/󰮏",
-                    ["/Documents"] = "/󱔘",
-                    ["/Desktop"] = "/",
-                    ["/Music"] = "/󰽴",
-                    ["/Pictures"] = "/",
-                    ["/Videos"] = "/",
-                    ["/.config"] = "/",
-                    ["/nvim"] = "/",
-                    --["vim"] = "",
-                    ["/lua"] = "/󰢱",
-                    ["/plugins"] = "/",
-                }
+                -- local user = os.getenv("USER")
+                -- local mods = {
+                --     ["/home/" .. user] = "󰚡",
+                --     ["/Downloads"] = "/󰮏",
+                --     ["/Documents"] = "/󱔘",
+                --     ["/Desktop"] = "/",
+                --     ["/Music"] = "/󰽴",
+                --     ["/Pictures"] = "/",
+                --     ["/Videos"] = "/",
+                --     ["/.config"] = "/",
+                --     ["/nvim"] = "/",
+                --     --["vim"] = "",
+                --     ["/lua"] = "/󰢱",
+                --     ["/plugins"] = "/",
+                -- }
+                --
+                -- local path = buf.path
+                --
+                -- for old_value, new_value in pairs(mods) do
+                --     path = path:gsub(old_value, new_value)
+                -- end
 
-                local path = buf.path
-
-                for old_value, new_value in pairs(mods) do
-                    path = path:gsub(old_value, new_value)
-                end
-
-                return path
+                return buf.name
                 -- name                | str        | the basename of the active file
                 -- path                | str        | the full path of the active file
                 -- bufnr (buffer only) | int        | the number of the active buffer
