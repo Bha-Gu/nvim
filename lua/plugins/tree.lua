@@ -1,3 +1,8 @@
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
+
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -11,6 +16,7 @@ return {
 		auto_clean_after_session_restore = true,
 		close_if_last_window = false,
 		sources = { "filesystem", "buffers", "git_status" },
+        sort_case_insensitive = true,
 		source_selector = {
 			winbar = true,
 			content_layout = "center",

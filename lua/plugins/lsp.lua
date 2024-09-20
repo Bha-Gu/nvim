@@ -7,13 +7,14 @@ return {
             "nvimtools/none-ls.nvim",
             "nvim-lua/plenary.nvim",
             "j-hui/fidget.nvim",
+            "folke/noice.nvim",
         },
         config = function()
-            local lspconfig = require('lspconfig')
-            local mason = require('mason')
-            local mason_lspconfig = require('mason-lspconfig')
-            local none_ls = require('null-ls')
-            local fidget = require('fidget')
+            local lspconfig = require("lspconfig")
+            local mason = require("mason")
+            local mason_lspconfig = require("mason-lspconfig")
+            local none_ls = require("null-ls")
+            local fidget = require("fidget")
 
             -- Mason setup
             mason.setup()
@@ -22,7 +23,6 @@ return {
             mason_lspconfig.setup({
                 ensure_installed = { "pyright", "lua_ls", "ruff" },
             })
-
 
             mason_lspconfig.setup_handlers({
                 function(server_name)
@@ -36,7 +36,7 @@ return {
                         settings = {
                             Lua = {
                                 diagnostics = {
-                                    globals = { 'vim' }, -- Recognize `vim` as a global variable in Lua
+                                    globals = { "vim" }, -- Recognize `vim` as a global variable in Lua
                                 },
                             },
                         },
