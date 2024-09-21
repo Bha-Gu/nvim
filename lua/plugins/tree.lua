@@ -16,7 +16,7 @@ return {
 		auto_clean_after_session_restore = true,
 		close_if_last_window = false,
 		sources = { "filesystem", "buffers", "git_status" },
-        sort_case_insensitive = true,
+		sort_case_insensitive = true,
 		source_selector = {
 			winbar = true,
 			content_layout = "center",

@@ -1,11 +1,11 @@
 local options = {
-    autoindent = true, -- take indent for new line from previous line
-    breakindent = true, -- wrapped line repeats indent
+	autoindent = true, -- take indent for new line from previous line
+	breakindent = true, -- wrapped line repeats indent
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 	cmdheight = 2, -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
-    confirm = true, -- ask what to do about unsaved/read-only files
-    cursorcolumn = true, -- highlight the screen column of the cursor
+	confirm = true, -- ask what to do about unsaved/read-only files
+	cursorcolumn = true, -- highlight the screen column of the cursor
 	cursorline = true, -- highlight the current line
 	expandtab = true, -- convert tabs to spaces
 	fileencoding = "utf-8", -- the encoding written to a file
@@ -14,10 +14,10 @@ local options = {
 	ignorecase = true, -- ignore case in search patterns
 	linebreak = true, -- companion to wrap, don't split words
 	mouse = "a", -- allow the mouse to be used in neovim
-    mousefocus = false, -- keyboard focus follows the mousekeyboard focus follows the mouse
-    mousehide = true, -- hide mouse pointer while typing
+	mousefocus = false, -- keyboard focus follows the mousekeyboard focus follows the mouse
+	mousehide = true, -- hide mouse pointer while typing
 	mousemoveevent = true, -- report mouse moves with <MouseMove> WARN: mousemove can cancle events when on
-    mousetime = 500, -- max time (ms) between mouse double-click
+	mousetime = 500, -- max time (ms) between mouse double-click
 	number = true, -- print the line number in front of each line
 	numberwidth = 2, -- number of columns used for the line number
 	pumheight = 10, -- pop up menu height
@@ -31,7 +31,7 @@ local options = {
 	smartcase = true, -- no ignore case when pattern has uppercase
 	smartindent = true, -- make indenting smarter again
 	splitbelow = true, -- force all horizontal splits to go below current window
-    splitkeep = "topline", -- determines scroll behavior for split windows
+	splitkeep = "topline", -- determines scroll behavior for split windows
 	splitright = true, -- force all vertical splits to go right of current window
 	swapfile = false, -- creates a swapfile
 	tabstop = 4, -- number of spaces that <Tab> in file uses
@@ -53,4 +53,3 @@ vim.opt.shortmess:append("c") -- don't give |ins-completion-menu| messages
 vim.opt.iskeyword:append("-") -- hyphenated words recognized by searches
 vim.opt.formatoptions:remove({ "c", "r", "o" }) -- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode.
 vim.opt.runtimepath:remove("/usr/share/vim/vimfiles") -- separate vim plugins from neovim in case vim still in use
-

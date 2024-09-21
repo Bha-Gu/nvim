@@ -1,4 +1,4 @@
 return {
-    'LhKipp/nvim-nu',
-    opts = {}
+	"LhKipp/nvim-nu",
+	opts = {},
 }

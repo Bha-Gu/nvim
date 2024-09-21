@@ -1,6 +1,4 @@
-return { 
-    'mrjones2014/smart-splits.nvim',
-    opts = {
-
-    }
+return {
+	"mrjones2014/smart-splits.nvim",
+	opts = {},
 }

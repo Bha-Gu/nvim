@@ -1,4 +1,4 @@
 return {
-    "mfussenegger/nvim-dap",
-    opt = {}
+	"mfussenegger/nvim-dap",
+	opt = {},
 }

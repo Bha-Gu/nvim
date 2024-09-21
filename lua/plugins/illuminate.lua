@@ -1,4 +1,4 @@
 return {
-    "RRethy/vim-illuminate",
-    opt = {}
+	"RRethy/vim-illuminate",
+	opt = {},
 }

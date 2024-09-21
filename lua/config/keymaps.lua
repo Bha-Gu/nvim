@@ -5,7 +5,6 @@ end
 -- Shorten function name
 local keymap = vim.keymap.set
 
-
 -- Smart Splits Mappings
 keymap("n", "<C-h>", function()
 	require("smart-splits").move_cursor_left()
@@ -99,7 +98,6 @@ keymap("n", "<leader>fvz", builtin.pickers, opts_with_decs("find past pickers"))
 keymap("n", "<leader>fv.", builtin.oldfiles, opts_with_decs("find recently opened files"))
 keymap("n", "<leader>fv/", builtin.current_buffer_fuzzy_find, opts_with_decs("find in current buffer"))
 
-
 -- Neovim LSP Pickers
 keymap("n", "<leader>flr", builtin.lsp_references, opts_with_decs("find LSP references"))
 keymap("n", "<leader>flI", builtin.lsp_incoming_calls, opts_with_decs("find LSP incoming calls"))
@@ -112,7 +110,6 @@ keymap("n", "<leader>fli", builtin.lsp_implementations, opts_with_decs("find LSP
 keymap("n", "<leader>flD", builtin.lsp_definitions, opts_with_decs("find LSP definitions"))
 keymap("n", "<leader>flt", builtin.lsp_type_definitions, opts_with_decs("find LSP type definitions"))
 
-
 -- Git Pickers
 keymap("n", "<leader>fgc", builtin.git_commits, opts_with_decs("list git commits"))
 keymap("n", "<leader>fgB", builtin.git_bcommits, opts_with_decs("list buffer's git commits"))
@@ -120,11 +117,6 @@ keymap("n", "<leader>fgR", builtin.git_bcommits_range, opts_with_decs("list buff
 keymap("n", "<leader>fgb", builtin.git_branches, opts_with_decs("list git branches"))
 keymap("n", "<leader>fgs", builtin.git_status, opts_with_decs("list git status changes"))
 keymap("n", "<leader>fgS", builtin.git_stash, opts_with_decs("list git stash items"))
-
-
-
-
-
 
 -- keymap("n", "<leader>fa", builtin.autocommands, opts_with_decs("[f]ind [a]utocommands"))
 -- keymap("n", "<leader>fs", builtin.builtin, opts_with_decs("[f]ind [s]earch Telescope functions"))
@@ -242,7 +234,6 @@ local gitui = Terminal:new({ cmd = "gitui", hidden = true })
 function _GITUI_TOGGLE()
 	gitui:toggle()
 end
-
 
 local TeleClip = require("telescope").extensions.neoclip
 function _CLIPBOARD()
