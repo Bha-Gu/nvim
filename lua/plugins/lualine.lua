@@ -20,39 +20,53 @@ return {
 			},
 		},
 		sections = {
-			lualine_a = { "mode" },
+			lualine_a = {
+				{
+					"mode",
+					on_click = function(n, mouse_btn, modifiers)
+						if mouse_btn == "l" then
+							-- Switch to insert mode
+							vim.cmd("startinsert")
+						elseif mouse_btn == "r" then
+							-- Switch to normal mode
+							vim.cmd("stopinsert")
+						elseif mouse_btn == "m" then
+							-- Switch to visual mode
+							vim.cmd("normal! v")
+						end
+						print(
+							string.format(
+								"Switched mode with %d clicks | Button: %s | Modifiers: %s",
+								n,
+								mouse_btn,
+								modifiers
+							)
+						)
+					end,
+				},
+			},
 			lualine_b = {
 				"branch",
 				{
 					"diff",
 					colored = true, -- Displays a colored diff status if set to true
-					-- diff_color = {
-					-- 	-- Same color values as the general color option can be used here.
-					-- 	added = "LuaLineDiffAdd", -- Changes the diff's added color
-					-- 	modified = "LuaLineDiffChange", -- Changes the diff's modified color
-					-- 	removed = "LuaLineDiffDelete", -- Changes the diff's removed color you
-					-- },
 					symbols = { added = "", modified = "", removed = "" }, -- Changes the symbols used by the diff.
-					source = nil, -- A function that works as a data source for diff.
-					-- It must return a table as such:
-					--   { added = add_count, modified = modified_count, removed = removed_count }
-					-- or nil on failure. count <= 0 won't be displayed.
 				},
 				{
 					"diagnostics",
 					sources = { "nvim_lsp", "nvim_diagnostic" },
 					sections = { "error", "warn", "info", "hint" },
-					-- diagnostics_color = {
-					-- 	-- Same values as the general color option can be used here.
-					-- 	error = "DiagnosticError", -- Changes diagnostics' error color.
-					-- 	warn = "DiagnosticWarn", -- Changes diagnostics' warn color.
-					-- 	info = "DiagnosticInfo", -- Changes diagnostics' info color.
-					-- 	hint = "DiagnosticHint", -- Changes diagnostics' hint color.
-					-- },
-					-- symbols = { error = "", warn = "", info = "", hint = "" },
 					colored = true, -- Displays diagnostics status in color if set to true.
 					update_in_insert = false, -- Update diagnostics in insert mode.
 					always_visible = false,
+					on_click = function(n, mouse_btn, modifiers)
+						if mouse_btn == "l" then
+							require("telescope.builtin").diagnostics()
+						elseif mouse_btn == "r" then
+							vim.diagnostic.setqflist({ open = true })
+						end
+						print(string.format("Clicked: %d times | Button: %s | Modifiers: %s", n, mouse_btn, modifiers))
+					end,
 				},
 			},
 			lualine_c = {
