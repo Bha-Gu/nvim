@@ -1,5 +1,5 @@
 local opts_with_decs = function(desc)
-	return { noremap = true, silent = true, desc = desc }
+    return { noremap = true, silent = true, desc = desc }
 end
 
 -- Shorten function name
@@ -7,28 +7,28 @@ local keymap = vim.keymap.set
 
 -- Smart Splits Mappings
 keymap("n", "<C-h>", function()
-	require("smart-splits").move_cursor_left()
+    require("smart-splits").move_cursor_left()
 end, opts_with_decs("Move to Left Split"))
 keymap("n", "<C-j>", function()
-	require("smart-splits").move_cursor_down()
+    require("smart-splits").move_cursor_down()
 end, opts_with_decs("Move to Below Split"))
 keymap("n", "<C-k>", function()
-	require("smart-splits").move_cursor_up()
+    require("smart-splits").move_cursor_up()
 end, opts_with_decs("Move to Above Split"))
 keymap("n", "<C-l>", function()
-	require("smart-splits").move_cursor_right()
+    require("smart-splits").move_cursor_right()
 end, opts_with_decs("Move to Right Split"))
 keymap("n", "<C-Up>", function()
-	require("smart-splits").resize_up()
+    require("smart-splits").resize_up()
 end, opts_with_decs("Resize Split Up"))
 keymap("n", "<C-Down>", function()
-	require("smart-splits").resize_down()
+    require("smart-splits").resize_down()
 end, opts_with_decs("Resize Split Down"))
 keymap("n", "<C-Left>", function()
-	require("smart-splits").resize_left()
+    require("smart-splits").resize_left()
 end, opts_with_decs("Resize Split Left"))
 keymap("n", "<C-Right>", function()
-	require("smart-splits").resize_right()
+    require("smart-splits").resize_right()
 end, opts_with_decs("Resize Split Right"))
 
 -- Swapping Buffers Between Windows with Ctrl + Shift
@@ -52,7 +52,6 @@ keymap("v", ">", ">gv^", opts_with_decs("Increase Indent"))
 -- Move Text Up and Down in Visual Mode
 keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
 keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
-
 -- Move Text Up and Down in Visual Line Mode
 keymap("x", "J", ":m '>+1<CR>gv=gv", opts_with_decs("Move Text Down"))
 keymap("x", "K", ":m '<-2<CR>gv=gv", opts_with_decs("Move Text Up"))
@@ -140,7 +139,7 @@ keymap("n", "<leader>fgS", builtin.git_stash, opts_with_decs("list git stash ite
 --
 -- Neovim Config Search
 keymap("n", "<leader>fn", function()
-	builtin.find_files({ cwd = vim.fn.stdpath("config") })
+    builtin.find_files({ cwd = vim.fn.stdpath("config") })
 end, opts_with_decs("[f]ind [n]eovim config files"))
 
 -- LSP Keymaps
@@ -157,11 +156,11 @@ keymap("n", "<leader>ld", vim.lsp.buf.declaration, opts_with_decs("[l]sp [D]ecla
 -- NeoTree Mappings
 keymap("n", "<leader>e", "<Cmd>Neotree toggle<CR>", opts_with_decs("Toggle Explorer"))
 keymap("n", "<leader>o", function()
-	if vim.bo.filetype == "neo-tree" then
-		vim.cmd.wincmd("p")
-	else
-		vim.cmd.Neotree("focus")
-	end
+    if vim.bo.filetype == "neo-tree" then
+        vim.cmd.wincmd("p")
+    else
+        vim.cmd.Neotree("focus")
+    end
 end, opts_with_decs("Toggle Explorer Focus"))
 
 -- buffers
@@ -176,77 +175,77 @@ keymap("n", "<leader>q", "<Cmd>bd<CR>", opts_with_decs("Close Tab"))
 
 -- DAP Mappings
 keymap("n", "<leader>db", function()
-	require("dap").toggle_breakpoint()
+    require("dap").toggle_breakpoint()
 end, opts_with_decs("Toggle Breakpoint"))
 keymap("n", "<leader>dB", function()
-	require("dap").clear_breakpoints()
+    require("dap").clear_breakpoints()
 end, opts_with_decs("Clear Breakpoints"))
 keymap("n", "<leader>dc", function()
-	require("dap").continue()
+    require("dap").continue()
 end, opts_with_decs("Start/Continue"))
 keymap("n", "<leader>dC", function()
-	vim.ui.input({ prompt = "Condition: " }, function(condition)
-		if condition then
-			require("dap").set_breakpoint(condition)
-		end
-	end)
+    vim.ui.input({ prompt = "Condition: " }, function(condition)
+        if condition then
+            require("dap").set_breakpoint(condition)
+        end
+    end)
 end, opts_with_decs("Conditional Breakpoint"))
 keymap("n", "<leader>di", function()
-	require("dap").step_into()
+    require("dap").step_into()
 end, opts_with_decs("Step Into"))
 keymap("n", "<leader>do", function()
-	require("dap").step_over()
+    require("dap").step_over()
 end, opts_with_decs("Step Over"))
 keymap("n", "<leader>dO", function()
-	require("dap").step_out()
+    require("dap").step_out()
 end, opts_with_decs("Step Out"))
 keymap("n", "<leader>dq", function()
-	require("dap").close()
+    require("dap").close()
 end, opts_with_decs("Close Session"))
 keymap("n", "<leader>dQ", function()
-	require("dap").terminate()
+    require("dap").terminate()
 end, opts_with_decs("Terminate Session"))
 keymap("n", "<leader>dp", function()
-	require("dap").pause()
+    require("dap").pause()
 end, opts_with_decs("Pause"))
 keymap("n", "<leader>dr", function()
-	require("dap").restart_frame()
+    require("dap").restart_frame()
 end, opts_with_decs("Restart"))
 keymap("n", "<leader>dR", function()
-	require("dap").repl.toggle()
+    require("dap").repl.toggle()
 end, opts_with_decs("Toggle REPL"))
 keymap("n", "<leader>ds", function()
-	require("dap").run_to_cursor()
+    require("dap").run_to_cursor()
 end, opts_with_decs("Run To Cursor"))
 
 -- ToggleTerm
 keymap("n", "<leader>tf", "<Cmd>ToggleTerm direction=float<CR>", opts_with_decs("ToggleTerm Float"))
 keymap(
-	"n",
-	"<leader>th",
-	"<Cmd>ToggleTerm size=10 direction=horizontal<CR>",
-	opts_with_decs("ToggleTerm Horizontal Split")
+    "n",
+    "<leader>th",
+    "<Cmd>ToggleTerm size=10 direction=horizontal<CR>",
+    opts_with_decs("ToggleTerm Horizontal Split")
 )
 keymap("n", "<leader>tv", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", opts_with_decs("ToggleTerm Vertical Split"))
 
 local Terminal = require("toggleterm.terminal").Terminal
 local gitui = Terminal:new({ cmd = "gitui", hidden = true })
 function _GITUI_TOGGLE()
-	gitui:toggle()
+    gitui:toggle()
 end
 
 local TeleClip = require("telescope").extensions.neoclip
 function _CLIPBOARD()
-	TeleClip.default({
-		initial_mode = "normal",
-		prompt_title = "Clipboard History ([p] to paste)",
-		layout_strategy = "center",
-		previewer = false,
-		layout_config = {
-			prompt_position = "top", -- Position the prompt at the top
-		},
-		truncate = false,
-	})
+    TeleClip.default({
+        initial_mode = "normal",
+        prompt_title = "Clipboard History ([p] to paste)",
+        layout_strategy = "center",
+        previewer = false,
+        layout_config = {
+            prompt_position = "top", -- Position the prompt at the top
+        },
+        truncate = false,
+    })
 end
 
 keymap("n", "<leader>gg", "<Cmd>lua _GITUI_TOGGLE()<CR>", opts_with_decs("Gitui interface"))
@@ -255,12 +254,12 @@ keymap("n", "<leader>c", "<Cmd>lua _CLIPBOARD()<CR>", opts_with_decs("Open Clipb
 
 local wk = require("which-key")
 wk.add({
-	{ "<leader>f", group = "find" }, -- group
-	{ "<leader>d", group = "debug" }, -- group
-	{ "<leader>l", group = "LSP" }, -- group
-	{ "<leader>t", group = "Terminal" }, -- group
-	{ "<leader>g", group = "git" }, -- group
-	{ "[", group = "Prev" }, -- group
-	{ "]", group = "Next" }, -- group
-	{ "<leader>", group = "Custom" }, -- group
+    { "<leader>f", group = "find" },  -- group
+    { "<leader>d", group = "debug" }, -- group
+    { "<leader>l", group = "LSP" },   -- group
+    { "<leader>t", group = "Terminal" }, -- group
+    { "<leader>g", group = "git" },   -- group
+    { "[",         group = "Prev" },  -- group
+    { "]",         group = "Next" },  -- group
+    { "<leader>",  group = "Custom" }, -- group
 })
